@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SE-EDU/LearningResources - Cross Site Request Forgery (CSRF)</title>
-    <link rel="stylesheet" href="../../../markbind/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../markbind/css/bootstrap-vue.min.css">
-    <link rel="stylesheet" href="../../../markbind/css/font-awesome.min.css" >
-    <link rel="stylesheet" href="../../../markbind/css/bootstrap-glyphicons.min.css" >
-    <link rel="stylesheet" href="../../../markbind/css/github.min.css">
-    <link rel="stylesheet" href="../../../markbind/css/markbind.css">
-    <link rel="stylesheet" href="../../../markbind/layouts/default/styles.css">
-    <link rel="stylesheet" href="../../../markbind/css/site-nav.css">
-    <link rel="stylesheet" href="../../../markbind/css/page-nav.css">
+    <title>SE-EDU/LearningResources - Introduction to Scala</title>
+    <link rel="stylesheet" href="../../markbind/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../markbind/css/bootstrap-vue.min.css">
+    <link rel="stylesheet" href="../../markbind/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="../../markbind/css/bootstrap-glyphicons.min.css" >
+    <link rel="stylesheet" href="../../markbind/css/github.min.css">
+    <link rel="stylesheet" href="../../markbind/css/markbind.css">
+    <link rel="stylesheet" href="../../markbind/layouts/default/styles.css">
+    <link rel="stylesheet" href="../../markbind/css/site-nav.css">
+    <link rel="stylesheet" href="../../markbind/css/page-nav.css">
     <link rel="stylesheet" href="/learningresources/css/main.css">
     
 </head>
@@ -23,17 +23,24 @@
     <nav id="page-nav" class="navbar navbar-light bg-transparent slim-scroll">
 
   <nav class="nav nav-pills flex-column my-0 small" style="flex-wrap: nowrap;">
-    <a class="nav-link py-1" href="#cross-site-request-forgery-csrf">Cross Site Request Forgery (CSRF)&#x200E;</a>
+    <a class="nav-link py-1" href="#introduction-to-scala">Introduction to Scala&#x200E;</a>
+    <a class="nav-link py-1" href="#overview">Overview&#x200E;</a>
+    <a class="nav-link py-1" href="#getting-started">Getting Started&#x200E;</a>
     <nav class="nav nav-pills flex-column my-0" style="margin-left: 5%; flex-wrap: nowrap;">
-      <a class="nav-link py-1" href="#flow-of-a-csrf-attack">Flow of a CSRF attack&#x200E;</a>
+      <a class="nav-link py-1" href="#setting-up-using-an-ide">Setting up using an IDE&#x200E;</a>
       <nav class="nav nav-pills flex-column my-0" style="margin-left: 5%; flex-wrap: nowrap;">
-        <a class="nav-link py-1" href="#step-1-the-victim-logs-in-to-a-vulnerable-web-service">Step 1: The victim logs in to a vulnerable web service&#x200E;</a>
-        <a class="nav-link py-1" href="#step-2-the-victim-visits-an-untrusted-website-controlled-by-the-attacker">Step 2: The victim visits an untrusted website controlled by the attacker&#x200E;</a>
-        <a class="nav-link py-1" href="#step-3-the-untrusted-website-makes-requests-to-the-vulnerable-web-service-on-the-victim-s-behalf">Step 3: The untrusted website makes requests to the vulnerable web service on the victim's behalf&#x200E;</a>
+        <a class="nav-link py-1" href="#installation">Installation&#x200E;</a>
+        <a class="nav-link py-1" href="#creating-the-project">Creating the Project&#x200E;</a>
+        <a class="nav-link py-1" href="#writing-code">Writing code&#x200E;</a>
+        <a class="nav-link py-1" href="#running-code">Running code&#x200E;</a>
       </nav>
-      <a class="nav-link py-1" href="#conditions-for-a-successful-csrf-attack">Conditions for a successful CSRF attack&#x200E;</a>
-      <a class="nav-link py-1" href="#defense-against-csrf-attacks">Defense against CSRF attacks&#x200E;</a>
-      <a class="nav-link py-1" href="#references">References&#x200E;</a>
+      <a class="nav-link py-1" href="#setting-up-using-the-command-line">Setting up using the command line&#x200E;</a>
+      <nav class="nav nav-pills flex-column my-0" style="margin-left: 5%; flex-wrap: nowrap;">
+        <a class="nav-link py-1" href="#installation-2">Installation&#x200E;</a>
+        <a class="nav-link py-1" href="#creating-the-project-2">Creating the Project&#x200E;</a>
+        <a class="nav-link py-1" href="#running-the-project">Running the project&#x200E;</a>
+        <a class="nav-link py-1" href="#modifying-the-code">Modifying the code&#x200E;</a>
+      </nav>
     </nav>
 
   </nav>
@@ -43,10 +50,10 @@
   <div id="site-nav">
     <span id="toc">
       <ul style="list-style-type: none; margin-left:-1em">
-        <li style="margin-top: 10px"><button class="dropdown-btn"><strong><strong>Programming Languages</strong></strong>
-            <i class="dropdown-btn-icon">
+        <li style="margin-top: 10px"><button class="dropdown-btn dropdown-btn-open"><strong><strong>Programming Languages</strong></strong>
+            <i class="dropdown-btn-icon rotate-icon">
               <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></i></button>
-          <div class="dropdown-container">
+          <div class="dropdown-container dropdown-container-open">
             <ul style="list-style-type: none; margin-left:-1em">
               <li style="margin-top: 10px"><button class="dropdown-btn">C++
                   <i class="dropdown-btn-icon">
@@ -94,7 +101,7 @@
               <li style="margin-top: 10px"><a href="/learningresources/contents/python/introduction-to-python.html" class="site-nav__a">Python</a></li>
               <li style="margin-top: 10px"><a href="/learningresources/contents/ruby/Ruby.html" class="site-nav__a">Ruby</a></li>
               <li style="margin-top: 10px"><a href="/learningresources/contents/rust/Rust.html" class="site-nav__a">Rust</a></li>
-              <li style="margin-top: 10px"><a href="/learningresources/contents/scala/Scala.html" class="site-nav__a">Scala</a></li>
+              <li style="margin-top: 10px"><a href="/learningresources/contents/scala/Scala.html" class="site-nav__a current">Scala</a></li>
               <li style="margin-top: 10px"><a href="/learningresources/contents/swift/welcome-to-swift.html" class="site-nav__a">Swift</a></li>
             </ul>
           </div>
@@ -209,10 +216,10 @@
             </ul>
           </div>
         </li>
-        <li style="margin-top: 10px"><button class="dropdown-btn dropdown-btn-open"><strong><strong>Other Topics</strong></strong>
-            <i class="dropdown-btn-icon rotate-icon">
+        <li style="margin-top: 10px"><button class="dropdown-btn"><strong><strong>Other Topics</strong></strong>
+            <i class="dropdown-btn-icon">
               <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></i></button>
-          <div class="dropdown-container dropdown-container-open">
+          <div class="dropdown-container">
             <ul style="list-style-type: none; margin-left:-1em">
               <li style="margin-top: 10px"><a href="/learningresources/contents/computerVision/cv.html" class="site-nav__a">Computer Vision</a></li>
               <li style="margin-top: 10px"><a href="/learningresources/contents/data/databases.html" class="site-nav__a">Databases</a></li>
@@ -227,12 +234,12 @@
                   </ul>
                 </div>
               </li>
-              <li style="margin-top: 10px"><button class="dropdown-btn dropdown-btn-open">Security
-                  <i class="dropdown-btn-icon rotate-icon">
+              <li style="margin-top: 10px"><button class="dropdown-btn">Security
+                  <i class="dropdown-btn-icon">
                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></i></button>
-                <div class="dropdown-container dropdown-container-open">
+                <div class="dropdown-container">
                   <ul style="list-style-type: none; margin-left:-1em">
-                    <li style="margin-top: 10px"><a href="/learningresources/contents/security/crossSiteRequestForgery/crossSiteRequestForgery.html" class="site-nav__a current">Cross Site Request Forgery</a></li>
+                    <li style="margin-top: 10px"><a href="/learningresources/contents/security/crossSiteRequestForgery/crossSiteRequestForgery.html" class="site-nav__a">Cross Site Request Forgery</a></li>
                     <li style="margin-top: 10px"><a href="/learningresources/contents/security/crossSiteScripting/crossSiteScripting.html" class="site-nav__a">Cross Site Scripting</a></li>
                     <li style="margin-top: 10px"><a href="/learningresources/contents/security/cryptography.html" class="site-nav__a">Cryptography</a></li>
                     <li style="margin-top: 10px"><a href="/learningresources/contents/security/Https.html" class="site-nav__a">HTTPS</a></li>
@@ -278,83 +285,128 @@
         </navbar>
         <p class="lead"><big><span><span class="dimmed"><strong>Learning Resources for Software Engineering Students</strong> »</span></span></big></p>
         <div class="website-content">
-          <h1 id="cross-site-request-forgery-csrf">Cross Site Request Forgery (CSRF)<a class="fa fa-anchor" href="#cross-site-request-forgery-csrf"></a></h1>
-          <p>Author: <a href="https://github.com/tran-tien-dat">Tran Tien Dat</a></p>
-          <p>Cross-Site Request Forgery (CSRF) is a dangerous type of attack that has affected major sites like <a href="http://archive.oreilly.com/pub/post/gmail_exploit_contact_list_hij.html">Gmail</a> and <a href="http://blog.jeremiahgrossman.com/2006/10/more-on-netflixs-csrf-advisory.html">Netflix</a> in the past. This article attempts to give an easy-to-digest introduction to the attack and how to protect your website from it.</p>
-          <h2 id="flow-of-a-csrf-attack">Flow of a CSRF attack<a class="fa fa-anchor" href="#flow-of-a-csrf-attack"></a></h2>
-          <p>A CSRF attack tricks the victim to perform actions that they do not intend to do on a web application in which they're currently authenticated. It generally consists of 3 steps:</p>
-          <ol>
-            <li>The victim logs in to a vulnerable web service</li>
-            <li>The victim visits an untrusted website controlled by the attacker</li>
-            <li>The untrusted website makes requests to the vulnerable web service on the victim's behalf</li>
-          </ol>
-          <p>These steps are best explained through an example. Suppose that Alice is a customer of the banking website <code>www.example-bank.com</code>. Alice wants to transfer money to her friend Bob (because she does not like the fact that he keeps paying for her meals when they go out together).</p>
-          <h3 id="step-1-the-victim-logs-in-to-a-vulnerable-web-service">Step 1: The victim logs in to a vulnerable web service<a class="fa fa-anchor" href="#step-1-the-victim-logs-in-to-a-vulnerable-web-service"></a></h3>
-          <p>Alice first logs in to the website at <code>www.example-bank.com/login</code>, providing her username and password. She then clicks on a hyperlink on the site to go to the URL <code>www.example-bank.com/transfer</code> to perform her transaction. Note that Alice does not have to enter her username and password again, but the bank still knows that the request is made by her. This is done through a mechanism of the HTTP protocol called a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">HTTP Cookie</a>. A <em>cookie</em> is a small piece of information that is sent along with all HTTP requests to a particular website. In our case, after receiving Alice's credentials for logging in, the bank instructs Alice's browser to store a <em>cookie</em> <code>auth=1abcd2ek3292fsa390sdf</code> and <strong>send this cookie together with every subsequent request</strong> to <code>www.example-bank.com</code>. Thus, once the web server sees this cookie in the request, it knows that this is an authenticated request from Alice. Many websites use this cookie mechanism so that users only have to log in once.</p>
-          <p>At <code>www.example-bank.com/transfer</code>, Alice fills out the following HTML form to transfer money to Bob:</p>
-          <pre><code class="hljs HTML"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/transfer"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"receiver-name"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Bob"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"receiver-account-no"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"123456"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"amount"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"100"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-</code></pre>
-          <p>As Alice clicks the submit button, the browser will send the following request to <code>www.example-bank.com</code>:</p>
-          <pre><code class="hljs">POST http://www.example-bank.com/transfer HTTP/1.1
-Cookie: auth=1abcd2ek3292fsa390sdf
-
-receiver-name=Bob&amp;receiver-account-no=123456&amp;amount=100
-</code></pre>
-          <p>The bank's server verifies that the cookie <code>auth=1abcd2ek3292fsa390sdf</code> is valid and is associated with Alice. It then proceeds to transfer $100 from Alice's account to account number 123456, which belongs to Bob.</p>
-          <h3 id="step-2-the-victim-visits-an-untrusted-website-controlled-by-the-attacker">Step 2: The victim visits an untrusted website controlled by the attacker<a class="fa fa-anchor" href="#step-2-the-victim-visits-an-untrusted-website-controlled-by-the-attacker"></a></h3>
-          <p>Alice then receives a chat message from her not-so-trustworthy friend, Eve:</p>
-          <pre><code class="hljs">Eve: OMG Alice! This site is selling the shoes you have always
-     wanted for half the price: www.i-am-not-evil.com/shoes
-</code></pre>
-          <p>Excited by this piece of news, Alice clicks on the hyperlink to check out <code>www.i-am-not-evil.com</code>.</p>
-          <h3 id="step-3-the-untrusted-website-makes-requests-to-the-vulnerable-web-service-on-the-victim-s-behalf">Step 3: The untrusted website makes requests to the vulnerable web service on the victim's behalf<a class="fa fa-anchor" href="#step-3-the-untrusted-website-makes-requests-to-the-vulnerable-web-service-on-the-victim-s-behalf"></a></h3>
-          <p>While browsing <code>www.i-am-not-evil.com</code>, Alice clicks on the <code>View more pictures</code> button on the website to see more pictures of her favorite pair of shoes. Unbeknownst to her, that button has the following HTML code:</p>
-          <pre><code class="hljs HTML"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"http://www.example-bank.com/transfer"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"receiver-name"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Eve"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"receiver-account-no"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"987654"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"amount"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"100000"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"View more pictures"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-</code></pre>
-          <p>So, when she clicks that button, the browser actually sends the following request to <code>http://www.example-bank.com</code>:</p>
-          <pre><code class="hljs">POST http://www.example-bank.com/transfer HTTP/1.1
-Cookie: auth=1abcd2ek3292fsa390sdf
-
-receiver-name=Eve&amp;receiver-account-no=987654&amp;amount=100000
-</code></pre>
-          <p>Since Alice is still logged in to <code>www.example-bank.com</code>, the browser automatically attaches the cookie <code>auth=1abcd2ek3292fsa390sdf</code> to any requests made to <code>www.example-bank.com</code>. Hence, the bank's server considers this as an authenticated request from Alice and proceeds to transfer $100,000 from Alice's account to account number 987654, which belongs to the attacker!</p>
-          <h2 id="conditions-for-a-successful-csrf-attack">Conditions for a successful CSRF attack<a class="fa fa-anchor" href="#conditions-for-a-successful-csrf-attack"></a></h2>
-          <p>From the example, we can see that a CSRF attack works by forging a valid request which <strong>inherits the identity and privileges of the victim</strong> on the vulnerable web server. Such inheritance of privileges is possible because the browser attaches any credentials associated with a website to all requests made to the site. Therefore, if the user is currently authenticated to the site, the site will have no way to distinguish between the forged request sent by the victim and a legitimate request sent by the victim. In short, there are 3 conditions necessary for the attack:</p>
-          <ol>
-            <li>The target website is vulnerable to a CSRF attack (i.e. it cannot distinguish between forged and legitimate requests).</li>
-            <li>The victim is authenticated to the target website.</li>
-            <li>The victim is tricked to visit an untrusted website by social engineering.</li>
-          </ol>
-          <p><em>Note: <a href="https://en.wikipedia.org/wiki/Social_engineering_%28security%29">Social engineering</a> refers to psychological manipulation of people into performing actions. In our example, Eve shares a link with a description that matches Alice's interest, which increases the chance that Alice will follow the link. Thus, this action is a form of social engineering.</em></p>
-          <h2 id="defense-against-csrf-attacks">Defense against CSRF attacks<a class="fa fa-anchor" href="#defense-against-csrf-attacks"></a></h2>
-          <p>Both users and websites can take actions to defend themselves against CSRF attacks. As the user, one can reduce the likelihood of being attacked by logging out of sensitive services like banking immediately after carrying out transactions. This will negate condition number 2. Condition number 3 can be mitigated if the user is extremely careful and never visits websites they do not know. However, users generally do not follow this and just click on interesting links they encounter on social media. Hence, this threat of social engineering could never be fully eliminated.</p>
-          <p>As for the web server, it can eliminate condition number 1 by adding a secret token as a hidden field to all forms that it serves. This token should be random and cannot be guessed by the attacker. Back to our example, the bank website should use a form like the following:</p>
-          <pre><code class="hljs HTML"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/transfer"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"csrf-token"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"abcd23ksk3l2faad2kdkl"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"receiver-name"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Bob"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"receiver-account-no"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"123456"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"amount"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"100"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-</code></pre>
-          <p>So a valid request by Alice made from the bank's own website will also carry this secret token <code>csrf-token=abcd23ksk3l2faad2kdkl</code>. Since the token is added by the bank's website on its webpages, forged requests from other websites will not know the token. Thus, when the bank's server receives a request, it can distinguish between a legitimate and a forged request by checking that the CSRF token is present and valid.</p>
-          <h2 id="references">References<a class="fa fa-anchor" href="#references"></a></h2>
+          <h1 id="introduction-to-scala">Introduction to Scala<a class="fa fa-anchor" href="#introduction-to-scala"></a></h1>
+          <p>Author: <a href="https://github.com/fzdy1914">Wang Chao</a></p>
+          <p><strong>Table of Contents</strong></p>
           <ul>
-            <li><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)</a> (A more technical description of the attack)</li>
-            <li><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet">https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet</a> (In-depth discussion of the various defense approaches, including those that do not work)</li>
-            <li><a href="http://www.cgisecurity.com/csrf-faq.html">http://www.cgisecurity.com/csrf-faq.html</a> (Short FAQs about CSRF)</li>
-            <li><a href="https://docs.djangoproject.com/en/2.0/ref/csrf/">https://docs.djangoproject.com/en/2.0/ref/csrf/</a> (CSRF Protection in Django)</li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#getting-started">Getting Started</a>
+              <ul>
+                <li><a href="#setting-up-using-an-ide">Setting up using an IDE</a>
+                  <ul>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#creating-the-project">Creating the Project</a></li>
+                    <li><a href="#writing-code">Writing code</a></li>
+                    <li><a href="#running-code">Running code</a></li>
+                  </ul>
+                </li>
+                <li><a href="#setting-up-using-the-command-line">Setting up using the command line</a>
+                  <ul>
+                    <li><a href="#installation-2">Installation</a></li>
+                    <li><a href="#creating-the-project-2">Creating the Project</a></li>
+                    <li><a href="#running-the-project">Running the project</a></li>
+                    <li><a href="#modifying-the-code">Modifying the code</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
           </ul>
+          <h1 id="overview">Overview<a class="fa fa-anchor" href="#overview"></a></h1>
+          <p><strong>Scala</strong> is a <em>multi-paradigm</em>, <em>statically typed</em> programming language.
+            It is designed to be a mixture of <em>Object-Oriented Programming</em> and <em>Functional Programming</em>.</p>
+          <p>Scala is <strong>statically typed</strong>, which means it do type checking like verifying and enforcing the constraints of types
+            at compile-time.</p>
+          <p>Scala is a <strong>pure OOP language</strong>, which means every value in it is an object, including functions and primitives.</p>
+          <p>Scala is not a <strong>pure Functional Programming language</strong>, but it contains many features of it including <em>currying</em>,
+            <em>type inference</em>, <em>immutability</em>, <em>lazy evaluation</em>, and <em>pattern matching</em>.</p>
+          <h1 id="getting-started">Getting Started<a class="fa fa-anchor" href="#getting-started"></a></h1>
+          <p>There are mainly two ways people prefer to work in Scala.</p>
+          <ol>
+            <li>Using an <strong>IDE</strong>.</li>
+            <li>Using the <strong>command line</strong>.</li>
+          </ol>
+          <p>The following tutorials will lead you through the set up process for either way you prefer.</p>
+          <h2 id="setting-up-using-an-ide">Setting up using an IDE<a class="fa fa-anchor" href="#setting-up-using-an-ide"></a></h2>
+          <p><strong>IntelliJ</strong> is the most commonly-used IDE by Scala developers.
+            We'll show you how to download and sett up IntelliJ with the Scala plugin.</p>
+          <p>More details can be find <a href="https://docs.scala-lang.org/getting-started-intellij-track/getting-started-with-scala-in-intellij.html">here</a></p>
+          <h3 id="installation">Installation<a class="fa fa-anchor" href="#installation"></a></h3>
+          <ol>
+            <li>Make sure you have the Java JDK 8 (version 1.8) or higher
+              <ul>
+                <li>Run <code>javac -version</code> on the command line to verify the version of JDK</li>
+                <li>If you don't have <strong>version 1.8</strong> or higher, install the <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK</a></li>
+              </ul>
+            </li>
+            <li>Next, download and install <a href="https://www.jetbrains.com/idea/download/">IntelliJ Community Edition</a></li>
+            <li>Then, after starting up IntelliJ, search for <strong>&quot;Scala&quot;</strong> plugin following the instructions (<a href="https://www.jetbrains.com/help/idea/managing-plugins.html">How to install IntelliJ plugins</a>)</li>
+            <li>Finally, download and install the Scala plugin.</li>
+          </ol>
+          <h3 id="creating-the-project">Creating the Project<a class="fa fa-anchor" href="#creating-the-project"></a></h3>
+          <ol>
+            <li>Open up <strong>IntelliJ</strong> and click <code>File =&gt; New =&gt; Project</code></li>
+            <li>On the left panel, select <strong>Scala</strong>. On the right panel, select <strong>IDEA</strong>.</li>
+            <li>Name the project <code>HelloWorld</code></li>
+            <li>Select the <strong>JDK</strong> and <strong>Scala SDK</strong> for the project.</li>
+          </ol>
+          <p>Note: If this is your <strong>first time</strong> creating a Scala project with IntelliJ, you'll need to install a Scala SDK.</p>
+          <ul>
+            <li>To the right of the Scala SDK field, click the <code>Create</code> button.</li>
+            <li>Select the <strong>highest</strong> version number (e.g. 2.12.8) and click <code>Download</code>. This might take a few minutes.</li>
+            <li>Once the SDK is created and you're back to the <strong>&quot;New Project&quot;</strong> window click <code>Finish</code>.</li>
+          </ul>
+          <p>Note: If you want to open an existing Scala project, you can click Open when you start IntelliJ.</p>
+          <h3 id="writing-code">Writing code<a class="fa fa-anchor" href="#writing-code"></a></h3>
+          <ol>
+            <li>On the Project pane on the left, right-click <strong>src</strong> and select <code>New =&gt; Scala class</code>.</li>
+            <li>Name the class <code>Hello</code> and change the Kind to <strong>object</strong>.</li>
+            <li>Change the code in the class to the following:</li>
+          </ol>
+          <pre><code class="hljs">object Hello extends App {
+  println(&quot;Hello, World!&quot;)
+}
+</code></pre>
+          <h3 id="running-code">Running code<a class="fa fa-anchor" href="#running-code"></a></h3>
+          <ul>
+            <li>Right click on <code>Hello</code> in your code and select <code>Run Hello</code>.</li>
+            <li>You are able to see the <strong>&quot;Hello, World&quot;</strong> output in the console.</li>
+          </ul>
+          <h2 id="setting-up-using-the-command-line">Setting up using the command line<a class="fa fa-anchor" href="#setting-up-using-the-command-line"></a></h2>
+          <p>This part will show you how to create a Scala project from a template, which can be used as a starting point
+            for your own projects. We’ll use <strong>sbt</strong>, the de facto build tool for Scala. sbt compiles, runs, and tests
+            your projects among other related tasks. We assume you know how to use a terminal.</p>
+          <p>More details can be find <a href="https://docs.scala-lang.org/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html">here</a></p>
+          <h3 id="installation-2">Installation<a class="fa fa-anchor" href="#installation-2"></a></h3>
+          <ol>
+            <li>Make sure you have the Java JDK 8 (version 1.8) or higher
+              <ul>
+                <li>Run <code>javac -version</code> on the command line to verify the version of JDK</li>
+                <li>If you don't have <strong>version 1.8</strong> or higher, install the <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK</a></li>
+              </ul>
+            </li>
+            <li>Install <strong>sbt</strong> (<a href="http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html">Mac</a>,
+              <a href="http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html">Windows</a>, <a href="http://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html">Linux</a>)</li>
+          </ol>
+          <h3 id="creating-the-project-2">Creating the Project<a class="fa fa-anchor" href="#creating-the-project-2"></a></h3>
+          <ol>
+            <li><code>cd</code> to an empty folder.</li>
+            <li>Run the following command <code>sbt new scala/hello-world.g8</code>. It pulls the <strong>&quot;hello-world&quot;</strong> template from GitHub.
+              It will also create a target folder, which you can ignore.</li>
+            <li>When prompted, name the application <code>hello-world</code>. This will create a project called <strong>&quot;hello-world&quot;</strong>.</li>
+          </ol>
+          <h3 id="running-the-project">Running the project<a class="fa fa-anchor" href="#running-the-project"></a></h3>
+          <ol>
+            <li><code>cd</code> into <strong>&quot;hello-world&quot;</strong>.</li>
+            <li>Run the command <code>sbt</code>. This will open up the sbt console.</li>
+            <li>Run the command <code>~run</code>. The <code>~</code> is optional and causes sbt to re-run on every file save, allowing for a fast edit/run/debug cycle.</li>
+          </ol>
+          <h3 id="modifying-the-code">Modifying the code<a class="fa fa-anchor" href="#modifying-the-code"></a></h3>
+          <ol>
+            <li>Open the file <code>src/main/scala/Main.scala</code> in your favorite text editor.</li>
+            <li>Change <strong>&quot;Hello, World!&quot;</strong> to <strong>&quot;Hello, Scala!&quot;</strong></li>
+            <li>If you haven't stopped the sbt command, you are able to see <strong>&quot;Hello, Scala!&quot;</strong> in the console.</li>
+            <li>You can continue to make changes as a start point of your own project.</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -363,19 +415,19 @@ receiver-name=Eve&amp;receiver-account-no=987654&amp;amount=100000
 <div id="flex-div"></div>
 <footer>
   <div class="text-center">
-    <small>[Generated by <a href="https://markbind.github.io/markbind/">MarkBind 1.18.0</a> on Sat, 16 Feb 2019 13:25:49 GMT]</small></div>
+    <small>[Generated by <a href="https://markbind.github.io/markbind/">MarkBind 1.18.0</a> on Sat, 16 Feb 2019 16:01:00 GMT]</small></div>
 </footer>
 </div>
 </body>
-<script src="../../../markbind/js/vue.min.js"></script>
-<script src="../../../markbind/js/vue-strap.min.js"></script>
-<script src="../../../markbind/js/bootstrap-utility.min.js"></script>
-<script src="../../../markbind/js/polyfill.min.js"></script>
-<script src="../../../markbind/js/bootstrap-vue.min.js"></script>
+<script src="../../markbind/js/vue.min.js"></script>
+<script src="../../markbind/js/vue-strap.min.js"></script>
+<script src="../../markbind/js/bootstrap-utility.min.js"></script>
+<script src="../../markbind/js/polyfill.min.js"></script>
+<script src="../../markbind/js/bootstrap-vue.min.js"></script>
 <script>
     const baseUrl = '/learningresources'
     const enableSearch = true
 </script>
-<script src="../../../markbind/js/setup.js"></script>
-<script src="../../../markbind/layouts/default/scripts.js"></script>
+<script src="../../markbind/js/setup.js"></script>
+<script src="../../markbind/layouts/default/scripts.js"></script>
 </html>
